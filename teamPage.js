@@ -1,7 +1,5 @@
 
 function handleAreaClick(areaId) {
-    // Perform API call based on the clicked area
-    // Replace the following URL with your API endpoint
     const apiUrl = `https://www.balldontlie.io/api/v1/teams/${areaId}`;
 
     fetch(apiUrl)
@@ -16,16 +14,16 @@ function handleAreaClick(areaId) {
 
             // Create a string with all relevant details
             const teamDetailsString = `
-                <p>Abbreviation: ${data.abbreviation}</p>
-                <p>City: ${data.city}</p>
-                <p>Conference: ${data.conference}</p>
-                <p>Division: ${data.division}</p>
-                <p>Full Name: ${data.full_name}</p>
-                <p>Name: ${data.name}</p>
+                <p> <strong> Abbreviation: </strong> ${data.abbreviation}</p>
+                <p> <strong> City: </strong> ${data.city}</p>
+                <p> <strong> Conference: </strong> ${data.conference}</p>
+                <p> <strong> Division: </strong> ${data.division}</p>
+                <p> <strong> Full Name: </strong> ${data.full_name}</p>
+                <p> <strong> Name: </strong> ${data.name}</p>
             `;
 
             // Insert the string into the HTML
-            teamInfoElement.innerHTML = `<div>Information for Area ${data.full_name}: ${teamDetailsString}</div>`;
+            teamInfoElement.innerHTML = `<div><strong>Information for Area ${data.full_name}:</strong> ${teamDetailsString}</div>`;
 
             // Set the tooltip content
             tooltipElement.innerText = data.full_name;
