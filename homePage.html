@@ -1,0 +1,155 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Calibri', sans-serif;
+            background: url('https://wallpapers.com/images/hd/basketball-nba-logo-wh8ae0q74gl3payt.jpg') no-repeat center center fixed;
+            background-size:cover;
+            color: white;
+        }
+
+        #header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(201, 8, 42, 0.7);
+        }
+
+        #header h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #header img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        #navigation {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(201, 8, 42, 0.7);
+            padding: 10px;
+        }
+
+        #navigation a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #navigation a:hover {
+            background-color: #1D428A;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        #search-player,
+        #search-team,
+        #search-date,
+        #search-stats {
+            background-color: rgba(201, 8, 42, 0.7);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        #top-players {
+            background-color: rgba(201, 8, 42, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            width: 100%;
+            margin: 0 auto;
+            /* Centers the element horizontally */
+        }
+
+        input[type="text"],
+        input[type="date"],
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #1D428A;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #C9082A;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header">
+        <h1><img src="https://images.ctfassets.net/h8q6lxmb5akt/5qXnOINbPrHKXWa42m6NOa/421ab176b501f5bdae71290a8002545c/nba-logo_2x.png"
+                alt="NBA Logo"> NBA Statistics</h1>
+    </div>
+
+    <div id="navigation">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Players</a>
+        <a href="teamPage.html">Team</a>
+        <a href="#">Help</a>
+    </div>
+
+    <div id="container">
+        <div id="search-player">
+            <h2>Search Player</h2>
+            <input type="text" id="playerName" placeholder="Enter player name">
+            <button onclick="searchPlayer()">Search</button>
+            <div id="playerStats"></div>
+        </div>
+
+        <div id="search-team">
+            <h2>Search Team</h2>
+            <input type="text" id="teamName" placeholder="Enter team name">
+            <button onclick="searchTeam()">Search</button>
+            <div id="teamInfo"></div>
+        </div>
+
+        <div id="search-date">
+            <h2>Search Date</h2>
+            <input type="date" id="gameDate">
+            <button onclick="searchDate()">Search</button>
+            <div id="gameInfo"></div>
+        </div>
+
+        <div id="search-stats">
+            <h2>Search Stats</h2>
+            <input type="date" id="statDate">
+            <button onclick="searchStats()">Search</button>
+            <div id="statInfo"></div>
+        </div>
+
+    </div>
+</body>
+<script src=""></script>
+
+</html>
