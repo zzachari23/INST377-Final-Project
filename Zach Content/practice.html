@@ -1,0 +1,221 @@
+<html>
+<head>
+    <title>NBA Player Stats</title>
+    <style>
+        
+        /*Sets background color to body*/
+   #mainBody{
+    background-color: #151226;
+   }
+    
+    
+    /*Changes color for main nav bar*/
+    #main-nav {
+        background-color: #C9082A;
+        border-radius: 30px;
+        width: 40%;
+        float: right;
+    }
+
+    /*Changes color for main nav bar*/
+    #main-nav a{
+        font-family: Impact, fantasy;
+    }
+    
+
+    /*Centers the main nav bar ul text*/
+    #main-nav ul{
+        text-align: center;
+    }
+
+    /*Styles the nav bar options*/
+    #main-nav ul li {
+        list-style-type: none;
+        display: inline-block;
+        text-align: center;
+        width: 8%;
+        padding: 12px;
+    }
+
+    /*Removes hyperlink style*/
+    #main-nav li a{
+        text-decoration: none;
+        color: black;
+    }
+    
+    /*Color change for the nav options box on hover*/
+    #main-nav li:hover  {
+        background-color:#17408B;;
+        border-radius: 30px;
+        text-decoration: underline;
+    }
+    /*Color change for the nav options text on hover*/
+    #main-nav li:hover a  {
+        color: aliceblue;
+    }
+
+
+    #main_header .title_h1{
+        display: inline;
+        margin-right: 10px;
+
+    }
+
+
+    #ballspin{
+        animation: spin 2s infinite linear;
+        transform-origin: center;
+        display: inline-block;
+    }
+
+    @keyframes spin {
+        to {
+        transform: rotate(360deg);
+        }
+    }
+           
+        #container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 50px;
+        }
+
+        .Playersbox{
+            background-color: #C9082A;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+
+        input[type="text"],
+        input[type="date"],
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #1D428A;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: lightblue;
+        }
+        
+        #mychart{
+            background-color: white;
+        }
+
+    
+    </style>
+</head>
+
+<body id="mainBody">
+
+
+
+    <nav id="main-nav">
+        <ul>
+            <!--Adding links to each option -->
+            <li><a href="homePage.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="players_page.html">Players</a></li>
+            <li><a href="teamPage.html">Teams</a></li>
+            <li><a href="Help.html">Help</a></li>
+            <li><a href="template.html">Template</a></li>
+        </ul>
+    </nav>
+
+    <div id="main_header">
+        <h1 class="title_h1" style="color: #17408B" >Official</h1>
+        <h1 class="title_h1" style="color: #FFFFFF;"> NBA</h1>
+        <h1 class="title_h1" style="color: #C9082A;">Statistics</h1>
+        <a href="welcome_page.html">
+        <h1 id="ballspin" >&#x1F3C0;</h1>
+        <a>
+    </div>
+
+
+
+    <h1 style="color: #FFFFFF;"> <u>Player Game Stats</u></h1>
+
+    <div id="container">
+        <div class="Playersbox">
+            <h2>Search Player 1</h2>
+            <input type="text" id="playerName1" placeholder="Enter player 1 name">
+            <button onclick="searchPlayer()">Search</button>
+            <div id="playerStats1"></div>
+        </div>
+
+        <div class="Playersbox">
+            <h2>Search Player 2</h2>
+            <input type="text" id="playerName2" placeholder="Enter player 2 name">
+            <button onclick="searchPlayer()">Search</button>
+            <div id="playerStats2"></div>
+        </div>
+
+        <div class="Playersbox">
+            <h2>Search Player 3</h2>
+            <input type="text" id="playerName3" placeholder="Enter player 3 name">
+            <button onclick="searchPlayer()">Search</button>
+            <div id="playerStats3"></div>
+        </div>
+
+        <div class="Playersbox">
+            <h2>Search Player 4</h2>
+            <input type="text" id="playerName4" placeholder="Enter player 4 name">
+            <button onclick="searchPlayer()">Search</button>
+            <div id="playerStats4"></div>
+        </div>
+
+        <div class="Playersbox">
+            <h2>Search Player 5</h2>
+            <input type="text" id="playerName5" placeholder="Enter player 5 name">
+            <button onclick="searchPlayer()">Search</button>
+            <div id="playerStats5"></div>
+        </div>
+
+    </div>
+
+    <h2 style="color: #FFFFFF;">Chart</h2>
+
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+    </script>
+      
+</body>
+<script src=""></script>
+
+</html>
+

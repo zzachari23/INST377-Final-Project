@@ -1,0 +1,109 @@
+<html>
+<head> 
+    <!-- Tab Title of Page -->
+   <title>Official NBA Statistics</title>
+
+   <style>
+   /*Sets background color to body*/
+   #mainBody{
+    background-color: #151226;
+   }
+    
+    
+    /*Changes color for main nav bar*/
+    #main-nav {
+        background-color: #C9082A;
+        border-radius: 30px;
+        width: 40%;
+        float: right;
+    }
+
+    /*Changes color for main nav bar*/
+    #main-nav a{
+        font-family: Impact, fantasy;
+    }
+    
+
+    /*Centers the main nav bar ul text*/
+    #main-nav ul{
+        text-align: center;
+    }
+
+    /*Styles the nav bar options*/
+    #main-nav ul li {
+        list-style-type: none;
+        display: inline-block;
+        text-align: center;
+        width: 8%;
+        padding: 12px;
+    }
+
+    /*Removes hyperlink style*/
+    #main-nav li a{
+        text-decoration: none;
+        color: black;
+    }
+    
+    /*Color change for the nav options box on hover*/
+    #main-nav li:hover  {
+        background-color:#17408B;;
+        border-radius: 30px;
+        text-decoration: underline;
+    }
+    /*Color change for the nav options text on hover*/
+    #main-nav li:hover a  {
+        color: aliceblue;
+    }
+
+
+    #main_header .title_h1{
+        display: inline;
+        margin-right: 10px;
+
+    }
+
+
+    #ballspin{
+        animation: spin 2s infinite linear;
+        transform-origin: center;
+        display: inline-block;
+    }
+
+    @keyframes spin {
+        to {
+        transform: rotate(360deg);
+        }
+    }
+
+
+    </style>
+    
+</head>
+<body id="mainBody">
+
+
+    <nav id="main-nav">
+        <ul>
+            <!--Adding links to each option -->
+            <li><a href="homePage.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="players_page.html">Players</a></li>
+            <li><a href="teamPage.html">Teams</a></li>
+            <li><a href="Help.html">Help</a></li>
+            <li><a href="template.html">Template</a></li>
+        </ul>
+    </nav>
+
+    <div id="main_header">
+        <h1 class="title_h1" style="color: #17408B" >Official</h1>
+        <h1 class="title_h1" style="color: #FFFFFF;"> NBA</h1>
+        <h1 class="title_h1" style="color: #C9082A;">Statistics</h1>
+        <a href="welcome_page.html">
+        <h1 id="ballspin" >&#x1F3C0;</h1>
+        <a>
+    </div>
+
+
+    
+</body>
+</html>
