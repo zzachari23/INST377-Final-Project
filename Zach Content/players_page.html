@@ -1,6 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" >
 <head>
     <title>NBA Player Stats</title>
+    
     <style>
         
         /*Sets background color to body*/
@@ -15,6 +17,7 @@
         border-radius: 30px;
         width: 40%;
         float: right;
+        border: 3px solid black;
     }
 
     /*Changes color for main nav bar*/
@@ -33,7 +36,7 @@
         list-style-type: none;
         display: inline-block;
         text-align: center;
-        width: 8%;
+        width: 11%;
         padding: 12px;
     }
 
@@ -86,6 +89,7 @@
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 8px;
+            border: 3px solid black;
         }
 
 
@@ -112,15 +116,17 @@
         #mychart{
             background-color:  #151226;
         }
-
-    
+        
+        h2{
+            font-family: Impact, fantasy;
+        }
     </style>
+
+<link rel="stylesheet" type="text/css" href="players_page_selector.css">
+<link rel='stylesheet' href='https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css'><link rel="stylesheet" href="./style1.css">
 </head>
 
 <body id="mainBody">
-
-
-
     <nav id="main-nav">
         <ul>
             <!--Adding links to each option -->
@@ -154,6 +160,23 @@
 
 
     <div id="container">
+
+        <div class="Playersbox">
+            <h2>Pick A Graph To Display</h2>
+             <div>
+                <div class="dropdown">
+                    <div class="select">
+                      <span>Select Graph</span>
+                      <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <ul class="dropdown-menu" id="menu">
+                      <li value="bar" id="bar">Bar Chart</li>
+                      <li value="line" id="line">Line Chart</li>
+                    </ul>
+                </div>
+             </div>
+        </div>
+
         <div class="Playersbox">
             <h2>Search Player 1</h2>
             <input type="text" id="playerName1" placeholder="Enter player 1 name">
@@ -191,51 +214,14 @@
 
     </div>
 
-   
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx = document.getElementById('myChart');
-      
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['Kevin Durant', 'James Harden', 'Stephen Curry', 'Clay Thompson', 'Kyrie Irving'],
-            datasets: [{
-              label: '2018 Season Points',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-              'rgba(255, 99, 132)',
-              'rgba(255, 159, 64)',
-              'rgba(255, 205, 86)',
-              'rgba(75, 192, 192)',
-              'rgba(54, 162, 235)',
-              'rgba(153, 102, 255)',
-              'rgba(201, 203, 207)'
-            ],borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
-            'rgb(201, 203, 207)'
-          ],
-          borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-    </script>
-      
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script><script  src="./players_page.js"></script>
+    
+    
+
 </body>
 <script src=""></script>
-
 </html>
 
 
