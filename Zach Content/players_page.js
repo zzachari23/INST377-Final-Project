@@ -1,29 +1,81 @@
 var myChart;
 var chartDefaultOption = "bar";
+var chartDefaultOption2 = "Top NBA Players Points";
+const options = [
+  'Lebron James',
+  'Dremound Green',
+  'Michael Jordan',
+  'Stephen Curry',
+  'Kyrie Irving',
+  'James Harden',
+  'Kobe Bryant'
+];
+
+function createAutocompleteBox() {
+  for (let i = 0; i < 5; i++) {
+      accessibleAutocomplete({
+          element: document.querySelector(`#autocomplete-container${i}`),
+          id: 'autocomplete-input',
+          source: options,
+          onConfirm: function (result) {
+              console.log('Selected value:', result);
+          }
+      });
+  }
+}
 
 
-/*Dropdown Menu*/
-$('.dropdown').click(function () {
+
+
+/*Dropdown Menu 0*/
+$('#dropdown0').click(function () {
   $(this).attr('tabindex', 1).focus();
   $(this).toggleClass('active');
   $(this).find('.dropdown-menu').slideToggle(300);
 });
-$('.dropdown').focusout(function () {
+
+$('#dropdown0').focusout(function () {
   $(this).removeClass('active');
   $(this).find('.dropdown-menu').slideUp(300);
-  
+});
 
-});
-$('.dropdown .dropdown-menu li').click(function () {
+$('#dropdown0 .dropdown-menu li').click(function () {
   chartDefaultOption  = $(this).attr('id');
-  $(this).parents('.dropdown').find('span').text($(this).text());
-  $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
-  createChart()
+  $(this).parents('#dropdown1').find('span').text($(this).text());
+  $(this).parents('#dropdown1').find('input').attr('value', $(this).attr('id'));
+  createChart();
 });
-/*End Dropdown Menu*/
+
+/*End Dropdown Menu 0*/
+
+
+/*Dropdown Menu 0*/
+$('#dropdown1').click(function () {
+  $(this).attr('tabindex', 1).focus();
+  $(this).toggleClass('active');
+  $(this).find('.dropdown-menu').slideToggle(300);
+});
+
+$('#dropdown1').focusout(function () {
+  $(this).removeClass('active');
+  $(this).find('.dropdown-menu').slideUp(300);
+});
+
+$('#dropdown1 .dropdown-menu li').click(function () {
+  chartDefaultOption2 = $(this).attr('id');
+  $(this).parents('#dropdown1').find('span').text($(this).text());
+  $(this).parents('#dropdown1').find('input').attr('value', $(this).attr('id'));
+  createChart();
+});
+
+/*End Dropdown Menu 0*/
+
+
 
 
 function createChart(){
+
+
 
 const ctx = document.getElementById('myChart');
 
@@ -36,7 +88,7 @@ myChart = new Chart(ctx, {
           data: {
             labels: ['Kevin Durant', 'James Harden', 'Stephen Curry', 'Clay Thompson', 'Kyrie Irving'],
             datasets: [{
-              label: '2018 Season Points',
+              label: chartDefaultOption2,
               data: [12, 19, 3, 5, 2, 3],
               backgroundColor: [
               'rgba(255, 99, 132)',
@@ -67,10 +119,16 @@ myChart = new Chart(ctx, {
           }
         });
 
-    }
-    
-window.onload = createChart();
+  }
 
+
+
+
+
+  window.onload = function () {
+    createChart();
+    createAutocompleteBox();
+};
 
 
 

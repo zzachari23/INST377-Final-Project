@@ -1,31 +1,16 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            /*
-            audio{
-                opacity: 0;
-            }
-            */
+<html lang="en">
 
-            button{
-                background-color: #151226;
-            }
-            
-        </style>
-    </head>
+<head>
+    <link rel="stylesheet" type="text/css" href="autocomplete.css">
+</head>
+
 <body>
 
+    <div id="autocomplete-container"></div>
 
-
-<audio controls autoplay id="audio">
-<source src="welcome_page_audio.mp3" type="audio/mpeg"> 
-</audio> 
-
-<button id="speaker_status">&#x1F507;</button>
-
-<script src="practice.js" defer></script>
+    <script src="https://unpkg.com/accessible-autocomplete/dist/accessible-autocomplete.min.js"></script>
+    <script src="autocomplete.js" defer></script>
 </body>
+
 </html>
-
-
