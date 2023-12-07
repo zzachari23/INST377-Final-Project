@@ -2,10 +2,13 @@ var myChart;
 var chartDefaultOption = "bar";
 var chartDefaultOption2 = "Top NBA Players of 2023 [Total Career Points]";
 //var arrayOfPlayers = ['Stephen Curry', 'James Harden', 'Nikola Jokic', 'Joel Embiid', 'Luka Doncic'];
+var arrayofSeasonPoints = [];
 var arrayOfPlayers = ['Stephen Curry', 'James Harden', 'Kevin Durant', 'Kyle Anderson', 'Kyrie Irving'];
 var arrayOfFirstNames = [];
 var arrayOfLastNames = [];
 var arrayOfIDs = [];
+var arrayOfWeights = [];
+var seasonYear;
 const options = [
   'Nikola Jokic',
   'Joel Embiid',
@@ -81,9 +84,12 @@ $('#dropdown1 .dropdown-menu li').click(function () {
   $(this).parents('#dropdown1').find('span').text($(this).text());
   $(this).parents('#dropdown1').find('input').attr('value', $(this).attr('id'));
   console.log(arrayOfPlayers)
+  seasonYear = chartDefaultOption2.slice(-4);
   arrayOfFirstNames = [];
   arrayOfLastNames = []; 
-  split()
+  arrayOfIDs = [];
+  arrayOfWeights = [];
+  split();
 });
 
 /*End Dropdown Menu 0*/
@@ -113,6 +119,7 @@ async function split() {
         for (let i = 0; i < data.data.length; i++) {
             if (arrayOfFirstNames[j] == data.data[i].first_name && arrayOfLastNames[j] == data.data[i].last_name) {
                 arrayOfIDs[j] = data.data[i].id;
+                arrayOfWeights[j] = data.data[i].weight_pounds
             }
         }
     });
@@ -121,7 +128,46 @@ async function split() {
 
     createChart();
 }
-/*--------------------FIGURE THIS PORTION OUT-------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
+
+
+function fetchData(){
+  if(chartDefaultOption2 == "Top NBA Players of 2023 [Total Career Points]"){
+    return [22235, 16884, 12633, 11230, 9665]
+  }else if(chartDefaultOption2 == "Weight[Pounds]") {
+    return arrayOfWeights;
+  }else if(chartDefaultOption2 == "Season 2023 [Avg Points Scored Per Game]") {
+    return arrayOfIDs;
+  }else if(chartDefaultOption2 == "Season 2022 [Avg Points Scored Per Game]") {
+    return arrayOfIDs;
+  }else if(chartDefaultOption2 == "Season 2021 [Avg Points Scored Per Game]") {
+    return arrayOfIDs;
+  }else if(chartDefaultOption2 == "Season 2020 [Avg Points Scored Per Game]") {
+    return arrayOfIDs;
+  }
+  else{
+    return arrayOfIDs;
+  }
+}
+
+/*---------------------------------------------------------------------------------*/
+
+function fetchAPIPoints(){
+  fetch(`https://www.balldontlie.io/api/v1/season_averages?season=${seasonYear}&player_ids[]=${arrayOfIDs[0]}&player_ids[]=${arrayOfIDs[1]}&player_ids[]=${arrayOfIDs[2]}&player_ids[]=${arrayOfIDs[3]}&player_ids[]=${arrayOfIDs[4]}`)
+    .then(resp => resp.json())
+    .then(data => {
+
+      for (let k = 0; k < data.data.length; k++){
+
+            if (arrayOfIDs[k] == data.data[k].id){
+              arrayofSeasonPoints.push(data.data[k].pts)  
+            }
+
+      }
+    })
+    
+}
+
 
 
 /*---------------------------------------------------------------------------------*/
@@ -143,7 +189,7 @@ myChart = new Chart(ctx, {
             labels: arrayOfPlayers,
             datasets: [{
               label: chartDefaultOption2,
-              data: chartDefaultOption2 == "Top NBA Players of 2023 [Total Career Points]" ? [22235, 16884, 12633, 11230, 9665] : arrayOfIDs,
+              data: fetchData(),
               backgroundColor: [
               'rgba(255, 99, 132)',
               'rgba(255, 159, 64)',
