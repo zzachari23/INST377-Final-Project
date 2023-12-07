@@ -120,10 +120,42 @@
         h2{
             font-family: Impact, fantasy;
         }
+
+        #autocomplete-container0,#autocomplete-container1,#autocomplete-container2,
+        #autocomplete-container3,#autocomplete-container4 {
+            width: 50%;
+        }
+        
+        #playerboxGraph{
+            background-color: blueviolet;
+        }
+
+        #playerboxStat{
+            background-color: rgb(212, 76, 18);
+            position: relative;
+            margin: 0 auto; 
+            left: 320px;
+            width: 50%;
+            text-align: center;
+        }
+
+        #dropdown1{
+            position: relative;
+            width: 90%;
+            left: 10px;
+        }
+       
+        #h2_options{
+            margin-top: 50px;
+            position: relative;
+            top: 50px;
+        }
+
     </style>
 
 <link rel="stylesheet" type="text/css" href="players_page_selector.css">
 <link rel='stylesheet' href='https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css'><link rel="stylesheet" href="./style1.css">
+<link rel="stylesheet" type="text/css" href="autocomplete.css">
 </head>
 
 <body id="mainBody">
@@ -135,7 +167,6 @@
             <li><a href="players_page.html">Players</a></li>
             <li><a href="teamPage.html">Teams</a></li>
             <li><a href="Help.html">Help</a></li>
-            <li><a href="template.html">Template</a></li>
         </ul>
     </nav>
 
@@ -152,21 +183,22 @@
 
     <h1 style="color: #FFFFFF;"> <u>Player Game Stats</u></h1>
 
-    <h2 style="color: #FFFFFF;">Chart</h2>
+    <h2 style="color: #FFFFFF;">Chart:</h2>
 
     <div>
         <canvas id="myChart"></canvas>
     </div>
 
+    <h2 id="h2_options" style="color: #FFFFFF;">Options:</h2>
 
     <div id="container">
 
-        <div class="Playersbox">
+        <div class="Playersbox" id="playerboxGraph">
             <h2>Pick A Graph To Display</h2>
              <div>
-                <div class="dropdown">
+                <div class="dropdown" id="dropdown0">
                     <div class="select">
-                      <span>Select Graph</span>
+                      <span>Select graph</span>
                       <i class="fa fa-chevron-left"></i>
                     </div>
                     <ul class="dropdown-menu" id="menu">
@@ -179,45 +211,72 @@
 
         <div class="Playersbox">
             <h2>Search Player 1</h2>
-            <input type="text" id="playerName1" placeholder="Enter player 1 name">
-            <button onclick="searchPlayer()">Search</button>
+            <div>
+                <div id="autocomplete-container0"></div>
+            </div>
             <div id="playerStats1"></div>
         </div>
 
         <div class="Playersbox">
             <h2>Search Player 2</h2>
-            <input type="text" id="playerName2" placeholder="Enter player 2 name">
-            <button onclick="searchPlayer()">Search</button>
-            <div id="playerStats2"></div>
+            <div>
+                <div id="autocomplete-container1"></div>
+            </div>
         </div>
 
         <div class="Playersbox">
             <h2>Search Player 3</h2>
-            <input type="text" id="playerName3" placeholder="Enter player 3 name">
-            <button onclick="searchPlayer()">Search</button>
-            <div id="playerStats3"></div>
+            <div>
+                <div id="autocomplete-container2"></div>
+            </div>
         </div>
 
         <div class="Playersbox">
             <h2>Search Player 4</h2>
-            <input type="text" id="playerName4" placeholder="Enter player 4 name">
-            <button onclick="searchPlayer()">Search</button>
-            <div id="playerStats4"></div>
+            <div>
+                <div id="autocomplete-container3"></div>
+            </div>
         </div>
 
         <div class="Playersbox">
             <h2>Search Player 5</h2>
-            <input type="text" id="playerName5" placeholder="Enter player 5 name">
-            <button onclick="searchPlayer()">Search</button>
-            <div id="playerStats5"></div>
+            <div>
+                <div id="autocomplete-container4"></div>
+            </div>
         </div>
+
+
+        <div class="Playersbox" id="playerboxStat">
+            <h2>Select Statistics Options</h2>
+             <div>
+                <div class="dropdown" id="dropdown1">
+                    <div class="select">
+                      <span>Select statistics</span>
+                      <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <ul class="dropdown-menu" id="menu">
+                      <li value="Top NBA Players of 2023 [Total Career Points]" id="Top NBA Players of 2023 [Total Career Points]">Top NBA Players of 2023 [Total Career Points]</li>
+                      <li value="Weight[Pounds]" id="Weight[Pounds]">Weight[Pounds]</li>
+                    </ul>
+                </div>
+             </div>
+        </div>
+
 
     </div>
 
 
+    <h1 id="api" style="color:white;">HELLO</h1>
+
+
+
+   
+
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script><script  src="./players_page.js"></script>
-    
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src="https://unpkg.com/accessible-autocomplete/dist/accessible-autocomplete.min.js"></script>
+    <script  src="players_page.js" defer></script>
     
 
 </body>

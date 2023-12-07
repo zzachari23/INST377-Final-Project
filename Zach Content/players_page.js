@@ -1,7 +1,16 @@
 var myChart;
 var chartDefaultOption = "bar";
-var chartDefaultOption2 = "Top NBA Players Points";
+var chartDefaultOption2 = "Top NBA Players of 2023 [Total Career Points]";
+//var arrayOfPlayers = ['Stephen Curry', 'James Harden', 'Nikola Jokic', 'Joel Embiid', 'Luka Doncic'];
+var arrayOfPlayers = ['Stephen Curry', 'James Harden', 'Kevin Durant', 'Kyle Anderson', 'Kyrie Irving'];
+var arrayOfFirstNames = [];
+var arrayOfLastNames = [];
+var arrayOfIDs = [];
 const options = [
+  'Nikola Jokic',
+  'Joel Embiid',
+  'Giannis Antetokounmpo',
+  'Luka Doncic',
   'Lebron James',
   'Dremound Green',
   'Michael Jordan',
@@ -11,6 +20,9 @@ const options = [
   'Kobe Bryant'
 ];
 
+
+
+
 function createAutocompleteBox() {
   for (let i = 0; i < 5; i++) {
       accessibleAutocomplete({
@@ -18,7 +30,10 @@ function createAutocompleteBox() {
           id: 'autocomplete-input',
           source: options,
           onConfirm: function (result) {
-              console.log('Selected value:', result);
+              if (result != undefined){
+              arrayOfPlayers[i] = result
+              }
+              console.log(arrayOfPlayers)
           }
       });
   }
@@ -65,17 +80,56 @@ $('#dropdown1 .dropdown-menu li').click(function () {
   chartDefaultOption2 = $(this).attr('id');
   $(this).parents('#dropdown1').find('span').text($(this).text());
   $(this).parents('#dropdown1').find('input').attr('value', $(this).attr('id'));
-  createChart();
+  console.log(arrayOfPlayers)
+  arrayOfFirstNames = [];
+  arrayOfLastNames = []; 
+  split()
 });
 
 /*End Dropdown Menu 0*/
 
+/*---------------------------------------------------------------------------------*/
 
 
+
+
+async function split() {
+  console.log(arrayOfPlayers)
+    for (let i = 0; i < arrayOfPlayers.length; i++) {
+        let splitNames = arrayOfPlayers[i].split(' ');
+        let firstName = splitNames[0];
+        let lastName = splitNames[splitNames.length - 1];
+        arrayOfFirstNames.push(firstName);
+        arrayOfLastNames.push(lastName);
+    }
+
+/*--------------------FIGURE THIS PORTION OUT-------------------------------------------------------------*/
+    const promises = arrayOfFirstNames.map(async (firstName, j) => {
+        const response = await fetch(`https://www.balldontlie.io/api/v1/players/?search=${firstName} ${arrayOfLastNames[j]}`);
+        const data = await response.json();
+
+        console.log(`Search for ${firstName} ${arrayOfLastNames[j]} returned:`, data);
+
+        for (let i = 0; i < data.data.length; i++) {
+            if (arrayOfFirstNames[j] == data.data[i].first_name && arrayOfLastNames[j] == data.data[i].last_name) {
+                arrayOfIDs[j] = data.data[i].id;
+            }
+        }
+    });
+
+    await Promise.all(promises);
+
+    createChart();
+}
+/*--------------------FIGURE THIS PORTION OUT-------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------------------*/
 
 function createChart(){
 
-
+console.log(arrayOfIDs)
+console.log(arrayOfFirstNames)
 
 const ctx = document.getElementById('myChart');
 
@@ -86,10 +140,10 @@ const ctx = document.getElementById('myChart');
 myChart = new Chart(ctx, {
           type: chartDefaultOption,
           data: {
-            labels: ['Kevin Durant', 'James Harden', 'Stephen Curry', 'Clay Thompson', 'Kyrie Irving'],
+            labels: arrayOfPlayers,
             datasets: [{
               label: chartDefaultOption2,
-              data: [12, 19, 3, 5, 2, 3],
+              data: chartDefaultOption2 == "Top NBA Players of 2023 [Total Career Points]" ? [22235, 16884, 12633, 11230, 9665] : arrayOfIDs,
               backgroundColor: [
               'rgba(255, 99, 132)',
               'rgba(255, 159, 64)',
