@@ -84,11 +84,15 @@ $('#dropdown1 .dropdown-menu li').click(function () {
   $(this).parents('#dropdown1').find('span').text($(this).text());
   $(this).parents('#dropdown1').find('input').attr('value', $(this).attr('id'));
   console.log(arrayOfPlayers)
-  seasonYear = chartDefaultOption2.slice(-4);
+  if(chartDefaultOption2 != "Top NBA Players of 2023 [Total Career Points]" && chartDefaultOption2 != "Weight[Pounds]"){
+         seasonYear = chartDefaultOption2.slice(7,11);
+  }
+  console.log(seasonYear)
   arrayOfFirstNames = [];
   arrayOfLastNames = []; 
   arrayOfIDs = [];
   arrayOfWeights = [];
+  arrayofSeasonPoints = [];
   split();
 });
 
@@ -126,7 +130,11 @@ async function split() {
 
     await Promise.all(promises);
 
-    createChart();
+    if(chartDefaultOption2 != "Top NBA Players of 2023 [Total Career Points]" && chartDefaultOption2 != "Weight[Pounds]"){
+        fetchAPIPoints();
+      } else{
+        createChart();
+      }
 }
 /*---------------------------------------------------------------------------------*/
 
@@ -137,13 +145,13 @@ function fetchData(){
   }else if(chartDefaultOption2 == "Weight[Pounds]") {
     return arrayOfWeights;
   }else if(chartDefaultOption2 == "Season 2023 [Avg Points Scored Per Game]") {
-    return arrayOfIDs;
+    return arrayofSeasonPoints;
   }else if(chartDefaultOption2 == "Season 2022 [Avg Points Scored Per Game]") {
-    return arrayOfIDs;
+    return arrayofSeasonPoints;
   }else if(chartDefaultOption2 == "Season 2021 [Avg Points Scored Per Game]") {
-    return arrayOfIDs;
+    return arrayofSeasonPoints;
   }else if(chartDefaultOption2 == "Season 2020 [Avg Points Scored Per Game]") {
-    return arrayOfIDs;
+    return arrayofSeasonPoints;
   }
   else{
     return arrayOfIDs;
@@ -156,19 +164,19 @@ function fetchAPIPoints(){
   fetch(`https://www.balldontlie.io/api/v1/season_averages?season=${seasonYear}&player_ids[]=${arrayOfIDs[0]}&player_ids[]=${arrayOfIDs[1]}&player_ids[]=${arrayOfIDs[2]}&player_ids[]=${arrayOfIDs[3]}&player_ids[]=${arrayOfIDs[4]}`)
     .then(resp => resp.json())
     .then(data => {
+      for(j=0; j <arrayOfIDs.length; j++){
 
-      for (let k = 0; k < data.data.length; k++){
-
-            if (arrayOfIDs[k] == data.data[k].id){
-              arrayofSeasonPoints.push(data.data[k].pts)  
-            }
-
+          for(i = 0; i<data.data.length; i++){
+              if (arrayOfIDs[j] == data.data[i].player_id){
+                  arrayofSeasonPoints.push(data.data[i].pts)  
+              }
+          }
       }
-    })
-    
+      createChart();
+  })
 }
-
-
+   
+    
 
 /*---------------------------------------------------------------------------------*/
 
@@ -176,6 +184,7 @@ function createChart(){
 
 console.log(arrayOfIDs)
 console.log(arrayOfFirstNames)
+console.log(seasonYear)
 
 const ctx = document.getElementById('myChart');
 
@@ -225,7 +234,7 @@ myChart = new Chart(ctx, {
 
 
 
-  window.onload = function () {
+window.onload = function () {
     createChart();
     createAutocompleteBox();
 };
