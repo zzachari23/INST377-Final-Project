@@ -1,6 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" >
 <head>
     <title>NBA Player Stats</title>
+    
     <style>
         
         /*Sets background color to body*/
@@ -15,6 +17,7 @@
         border-radius: 30px;
         width: 40%;
         float: right;
+        border: 3px solid black;
     }
 
     /*Changes color for main nav bar*/
@@ -33,7 +36,7 @@
         list-style-type: none;
         display: inline-block;
         text-align: center;
-        width: 8%;
+        width: 11%;
         padding: 12px;
     }
 
@@ -86,6 +89,7 @@
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 8px;
+            border: 3px solid black;
         }
 
 
@@ -112,15 +116,49 @@
         #mychart{
             background-color:  #151226;
         }
+        
+        h2{
+            font-family: Impact, fantasy;
+        }
 
-    
+        #autocomplete-container0,#autocomplete-container1,#autocomplete-container2,
+        #autocomplete-container3,#autocomplete-container4 {
+            width: 50%;
+        }
+        
+        #playerboxGraph{
+            background-color: blueviolet;
+        }
+
+        #playerboxStat{
+            background-color: rgb(212, 76, 18);
+            position: relative;
+            margin: 0 auto; 
+            left: 320px;
+            width: 50%;
+            text-align: center;
+        }
+
+        #dropdown1{
+            position: relative;
+            width: 90%;
+            left: 10px;
+        }
+       
+        #h2_options{
+            margin-top: 50px;
+            position: relative;
+            top: 50px;
+        }
+
     </style>
+
+<link rel="stylesheet" type="text/css" href="players_page_selector.css">
+<link rel='stylesheet' href='https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css'><link rel="stylesheet" href="./style1.css">
+<link rel="stylesheet" type="text/css" href="autocomplete.css">
 </head>
 
 <body id="mainBody">
-
-
-
     <nav id="main-nav">
         <ul>
             <!--Adding links to each option -->
@@ -129,7 +167,6 @@
             <li><a href="players_page.html">Players</a></li>
             <li><a href="teamPage.html">Teams</a></li>
             <li><a href="Help.html">Help</a></li>
-            <li><a href="template.html">Template</a></li>
         </ul>
     </nav>
 
@@ -137,7 +174,7 @@
         <h1 class="title_h1" style="color: #17408B" >Official</h1>
         <h1 class="title_h1" style="color: #FFFFFF;"> NBA</h1>
         <h1 class="title_h1" style="color: #C9082A;">Statistics</h1>
-        <a href="welcome_page.html">
+        <a href="welcome_page.html" title="Click to go to Welcome page">
         <h1 id="ballspin" >&#x1F3C0;</h1>
         <a>
     </div>
@@ -146,96 +183,108 @@
 
     <h1 style="color: #FFFFFF;"> <u>Player Game Stats</u></h1>
 
-    <h2 style="color: #FFFFFF;">Chart</h2>
+    <h2 style="color: #FFFFFF;">Chart:</h2>
 
     <div>
         <canvas id="myChart"></canvas>
     </div>
 
+    <h2 id="h2_options" style="color: #FFFFFF;">Options:</h2>
 
     <div id="container">
+
+        <div class="Playersbox" id="playerboxGraph">
+            <h2>Pick A Graph To Display</h2>
+             <div>
+                <div class="dropdown" id="dropdown0">
+                    <div class="select">
+                      <span>Select graph</span>
+                      <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <ul class="dropdown-menu" id="menu">
+                      <li value="bar" id="bar">Bar Chart</li>
+                      <li value="line" id="line">Line Chart</li>
+                    </ul>
+                </div>
+             </div>
+        </div>
+
         <div class="Playersbox">
             <h2>Search Player 1</h2>
-            <input type="text" id="playerName1" placeholder="Enter player 1 name">
-            <button onclick="searchPlayer()">Search</button>
+            <div>
+                <div id="autocomplete-container0"></div>
+            </div>
             <div id="playerStats1"></div>
         </div>
 
         <div class="Playersbox">
             <h2>Search Player 2</h2>
-            <input type="text" id="playerName2" placeholder="Enter player 2 name">
-            <button onclick="searchPlayer()">Search</button>
-            <div id="playerStats2"></div>
+            <div>
+                <div id="autocomplete-container1"></div>
+            </div>
         </div>
 
         <div class="Playersbox">
             <h2>Search Player 3</h2>
-            <input type="text" id="playerName3" placeholder="Enter player 3 name">
-            <button onclick="searchPlayer()">Search</button>
-            <div id="playerStats3"></div>
+            <div>
+                <div id="autocomplete-container2"></div>
+            </div>
         </div>
 
         <div class="Playersbox">
             <h2>Search Player 4</h2>
-            <input type="text" id="playerName4" placeholder="Enter player 4 name">
-            <button onclick="searchPlayer()">Search</button>
-            <div id="playerStats4"></div>
+            <div>
+                <div id="autocomplete-container3"></div>
+            </div>
         </div>
 
         <div class="Playersbox">
             <h2>Search Player 5</h2>
-            <input type="text" id="playerName5" placeholder="Enter player 5 name">
-            <button onclick="searchPlayer()">Search</button>
-            <div id="playerStats5"></div>
+            <div>
+                <div id="autocomplete-container4"></div>
+            </div>
         </div>
+
+
+        <div class="Playersbox" id="playerboxStat">
+            <h2>Select Statistics Options</h2>
+             <div>
+                <div class="dropdown" id="dropdown1">
+                    <div class="select">
+                      <span>Select statistics</span>
+                      <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <ul class="dropdown-menu" id="menu">
+                      <li value="Top NBA Players of 2023 [Total Career Points]" id="Top NBA Players of 2023 [Total Career Points]">Top NBA Players of 2023 [Total Career Points]</li>
+                      <li value="Weight[Pounds]" id="Weight[Pounds]">Weight[Pounds]</li>
+                      <li value="Season 2023 [Avg Points Scored Per Game]" id="Season 2023 [Avg Points Scored Per Game]">Season 2023 [Avg Points Scored Per Game]</li>
+                      <li value="Season 2022 [Avg Points Scored Per Game]" id="Season 2022 [Avg Points Scored Per Game]">Season 2022 [Avg Points Scored Per Game]</li>
+                      <li value="Season 2021 [Avg Points Scored Per Game]" id="Season 2021 [Avg Points Scored Per Game]">Season 2021 [Avg Points Scored Per Game]</li>
+                      <li value="Season 2020 [Avg Points Scored Per Game]" id="Season 2020 [Avg Points Scored Per Game]">Season 2020 [Avg Points Scored Per Game]</li>
+                    </ul>
+                </div>
+             </div>
+        </div>
+
 
     </div>
 
+
+    <h1 id="api" style="color:white;">HELLO</h1>
+
+
+
    
+
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx = document.getElementById('myChart');
-      
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['Kevin Durant', 'James Harden', 'Stephen Curry', 'Clay Thompson', 'Kyrie Irving'],
-            datasets: [{
-              label: '2018 Season Points',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-              'rgba(255, 99, 132)',
-              'rgba(255, 159, 64)',
-              'rgba(255, 205, 86)',
-              'rgba(75, 192, 192)',
-              'rgba(54, 162, 235)',
-              'rgba(153, 102, 255)',
-              'rgba(201, 203, 207)'
-            ],borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
-            'rgb(201, 203, 207)'
-          ],
-          borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-    </script>
-      
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src="https://unpkg.com/accessible-autocomplete/dist/accessible-autocomplete.min.js"></script>
+    <script  src="players_page.js" defer></script>
+    
+
 </body>
 <script src=""></script>
-
 </html>
 
 
