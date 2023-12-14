@@ -12,3 +12,18 @@ Link to API: https://app.balldontlie.io/
 To display this information, we will be styling our web pages using HTML and CSS. We have also used page transition animations, gifs, and custom styled CSS buttons that we aquired from online sources but have personalized/modified them to make them more aligned with our platform's visual asthetics. Additionally, we will be using Javascript to fetch the API using the FETCH method. This will allow us to retrieve the data we need and display it in a user-friendly way. Our platoform, also makes use of Express as our Javascript Framework using Node.js which handles the backend and server-side of our application. Lastly, our platform makes use of a Supabase database that contains tables that provide critical NBA player and teams stats for users. In addition, the user can also insert information into the database as well. 
 
 ## Description of target browsers: 
+
+# Developer Manual
+
+## How to install application and all dependencies
+1. First git clone the repository files to your local computer. This can be done by clicking the "Code" button on the repo page. Once you click the button, you can git clone by using either HTTPS, SSH or GitHub CLI. For Mac users, you can open up the terminal and type in 'git clone [Insrt SSH Link]' and it will download the repo files as one folder to your desired directory.
+## How to run application on server
+## How to run any tests you have written for your software 
+## The A
+## A clear set of expectations around known bugs and a road-map for future development 
+
+
+
+- Install dependencies (do this after you clone the repo): npm i
+- Start the web application: npm start
+- Stop the web application: CTRL + C in your terminal
