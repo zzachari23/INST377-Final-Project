@@ -23,13 +23,9 @@ To display this information, we will be styling our web pages using HTML and CSS
 4. Make sure the Supabase package is installed in your local project directory to ensure that the code for using the Supabase database works. This can be done by opening up terminal for MAC users and typing 'npm install @supabase/supabase-js'
 ## How to run application on server
 1.To start running the application on a local server, for MAC users open up terminal and type in 'npm start'
-2.To stop the 
+2.To stop the application running on a server press CTRL + C in terminal for MAC users
 ## How to run any tests you have written for your software 
-## The A
+## The API for your server application - all GET, POST, PATCH, etc endpoints, and what they each do 
 ## A clear set of expectations around known bugs and a road-map for future development 
 
 
-
-- Install dependencies (do this after you clone the repo): npm i
-- Start the web application: npm start
-- Stop the web application: CTRL + C in your terminal
