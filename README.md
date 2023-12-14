@@ -23,9 +23,10 @@ To display this information, we will be styling our web pages using HTML and CSS
 4. Install Express by opening up terminal for MAC users and type 'npm install express'
 5. Install nodemon by opening up terminal for MAC users and type 'npm install nodemon'
 6. Make sure the Supabase package is installed in your local project directory to ensure that the code for using the Supabase database works. This can be done by opening up terminal for MAC users and typing 'npm install @supabase/supabase-js'
-## How to run application on server
+## How to run application on server and open up the application on the server port
 1. To start running the application on a local server, for MAC users open up terminal and type in 'npm start'
-2. To stop the application running on a server press CTRL + C in terminal for MAC users
+2. Then go to your default web browser and type in http://localhost:4000 in the search bar to see the application 
+3. To stop the application running on a server press CTRL + C in terminal for MAC users
 ## How to run any tests you have written for your software 
 ## The API for your server application - all GET, POST, PATCH, etc endpoints, and what they each do 
 ## A clear set of expectations around known bugs and a road-map for future development 
