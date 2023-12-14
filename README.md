@@ -21,7 +21,8 @@ To display this information, we will be styling our web pages using HTML and CSS
 2. Install Node Version Manager (nvm) to your local computer so that we can use nvm to install Node.js. Link to step-by-step guide on installing nvm: https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/
 3. Open up terminal for Mac users and type 'npm -v' to check to see what version of npm you installed. npm stands for Node Packet Manager which automatically comes with Node.js when you install node via nvm
 4. Install Express by opening up terminal for MAC users and type 'npm install express'
-5. Make sure the Supabase package is installed in your local project directory to ensure that the code for using the Supabase database works. This can be done by opening up terminal for MAC users and typing 'npm install @supabase/supabase-js'
+5. Install nodemon by opening up terminal for MAC users and type 'npm install nodemon'
+6. Make sure the Supabase package is installed in your local project directory to ensure that the code for using the Supabase database works. This can be done by opening up terminal for MAC users and typing 'npm install @supabase/supabase-js'
 ## How to run application on server
 1. To start running the application on a local server, for MAC users open up terminal and type in 'npm start'
 2. To stop the application running on a server press CTRL + C in terminal for MAC users
