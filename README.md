@@ -1,5 +1,6 @@
 # INST377-Final-Project
 ## Project Title: Official NBA Statistics 
+## Group: Project Group 3
 ## Names: Sarah Peng, Shengjie Liu, Zachariah Zachariah
 ## Description of project: 
 
