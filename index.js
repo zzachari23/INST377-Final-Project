@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser')
 const express = require("express")
 const app = express()
-const port = 3000
+const port = 4000
 
 app.use(bodyParser.json())
 
@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 })
 
 // GET, which serves the players.html page
-app.get("/about", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile("public/Zach Content/players_page.html", { root: __dirname })
 })
 
