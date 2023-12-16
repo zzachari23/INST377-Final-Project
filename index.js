@@ -5,8 +5,8 @@ const port = 4000;
 
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.sendFile('public/Zach Content/players_page.html', { root: __dirname });
+app.get('/welcome', (req, res) => {
+    res.sendFile('public/welcome_page_animation.html', { root: __dirname });
 });
 
 app.get('/about', (req, res) => {
